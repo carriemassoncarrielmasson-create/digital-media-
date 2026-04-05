@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Project | Data-Driven Stories</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #172554;
+      --panel: rgba(255,255,255,0.08);
+      --panel-strong: rgba(255,255,255,0.14);
+      --text: #eef2ff;
+      --muted: #c7d2fe;
+      --gold: #fbbf24;
+      --pink: #f472b6;
+      --cyan: #22d3ee;
+      --red: #fb7185;
+      --green: #34d399;
+      --border: rgba(255,255,255,0.14);
+      --shadow: 0 18px 60px rgba(0,0,0,0.28);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(34,211,238,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(244,114,182,0.14), transparent 24%),
+        linear-gradient(180deg, #0b1120 0%, #111b39 48%, #0b1120 100%);
+      line-height: 1.75;
+    }
+
+    a { color: var(--gold); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 15, 33, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.88rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      opacity: 0.92;
+    }
+
+    .nav a:hover { color: var(--gold); }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      place-items: center;
+      padding: 90px 20px 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(5,10,25,0.48), rgba(5,10,25,0.74)),
+        url('housing.jpg') center/cover no-repeat;
+      opacity: 0.92;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 180px;
+      background: linear-gradient(180deg, transparent, rgba(8,15,33,0.98));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+      color: #e2e8f0;
+    }
+
+    .hero-links {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: #0b1120;
+      background: var(--gold);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: none;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .overview {
+      margin-top: -40px;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: rgba(15, 23, 42, 0.76);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card .label {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+    }
+
+    .stat-card .value {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .section-shell {
+      padding: 88px 0 40px;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.04;
+      margin: 0 0 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .story {
+      margin: 36px 0 80px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .story-hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: end;
+      position: relative;
+      padding: 38px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .story-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,15,33,0.15), rgba(8,15,33,0.88));
+    }
+
+    .story-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .story-tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .story-title {
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 1.02;
+      margin: 0 0 14px;
+      letter-spacing: -0.04em;
+    }
+
+    .story-dek {
+      font-size: clamp(1rem, 1.7vw, 1.25rem);
+      color: #e5e7eb;
+      max-width: 680px;
+    }
+
+    .story-body {
+      padding: 44px 38px 48px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .lead {
+      font-size: 1.14rem;
+      color: #f8fafc;
+    }
+
+    .content-card,
+    .quote-card,
+    .embed,
+    .mini-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .content-card + .content-card,
+    .embed + .content-card,
+    .content-card + .embed,
+    .quote-card + .embed,
+    .embed + .embed { margin-top: 22px; }
+
+    .number-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #0b1120;
+      background: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .content-card h3,
+    .embed h3,
+    .quote-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .content-card p:last-child,
+    .embed p:last-child,
+    .quote-card p:last-child { margin-bottom: 0; }
+
+    .quote-card {
+      border-left: 4px solid var(--pink);
+      background: linear-gradient(135deg, rgba(244,114,182,0.12), rgba(255,255,255,0.05));
+    }
+
+    .quote-card strong {
+      color: var(--pink);
+      display: block;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    .embed-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .embed-title span {
+      font-weight: 800;
+      font-size: 1.02rem;
+    }
+
+    .embed-pill {
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .embed iframe {
+      width: 100%;
+      min-height: 520px;
+      border: 0;
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .sticky-panel {
+      position: sticky;
+      top: 84px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .key-stat {
+      border-radius: 22px;
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(251,191,36,0.16), rgba(34,211,238,0.12));
+      border: 1px solid rgba(251,191,36,0.28);
+    }
+
+    .key-stat .big {
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .key-stat .small {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .color-dots {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+    }
+
+    .dot.gold { background: var(--gold); }
+    .dot.pink { background: var(--pink); }
+    .dot.cyan { background: var(--cyan); }
+    .dot.green { background: var(--green); }
+
+    .image-block {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .image-block img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .image-block .caption {
+      padding: 14px 16px 16px;
+      margin-top: 0;
+    }
+
+    .split-callout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .mini-panel h4 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .mini-panel p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .sources {
+      margin: 60px 0 90px;
+      padding: 30px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .sources ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 20px 20px 60px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .overview,
+      .split-callout,
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sticky-panel {
+        position: static;
+      }
+
+      .story-hero,
+      .hero {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner,
+      .story-body,
+      .story-hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .embed iframe {
+        min-height: 390px;
+      }
+
+      h1 {
+        font-size: 2.45rem;
+      }
+
+      .story-title {
+        font-size: 2.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">P3414 Creative Project</div>
+      <div class="nav">
+        <a href="#story1">Housing story</a>
+        <a href="#story2">Mental wellbeing story</a>
+        <a href="#sources">Sources</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Data journalism | Scotland | Interactive storytelling</div>
+      <h1>Two stories, built for the web</h1>
+      <p>This project combines long-form reporting, strong colour, visual storytelling, and interactive charts to explore two urgent issues in Scotland: housing affordability and inequality in mental wellbeing.</p>
+      <div class="hero-links">
+        <a class="btn" href="#story1">Read Story 1</a>
+        <a class="btn secondary" href="#story2">Read Story 2</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap overview">
+    <div class="stat-card">
+      <div class="label">Story one headline stat</div>
+      <div class="value">30.5%</div>
+      <div class="label">of annual salary spent on rent in Edinburgh</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Story two headline stat</div>
+      <div class="value">33%</div>
+      <div class="label">of young women report multiple anxiety symptoms</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Format</div>
+      <div class="value">2 stories</div>
+      <div class="label">with embeds, colour, imagery, and interactive elements</div>
+    </div>
+  </div>
+
+  <main class="wrap section-shell">
+    <div class="section-heading">
+      <div class="kicker">Story one</div>
+      <h2>Housing affordability, pressure, and a widening divide</h2>
+      <p>This page is designed to feel more like a digital feature than a plain document. Swap the placeholder image links and embed URLs for your own Datawrapper and Flourish content.</p>
+    </div>
+
+    <section class="story" id="story1">
+      <div class="story-hero" style="background-image:url('housing.jpg');">
+        <div class="story-hero-content">
+          <div class="story-tag">Housing feature</div>
+          <h2 class="story-title">Edinburgh renters spend nearly double the share of income on housing as those in the Borders</h2>
+          <p class="story-dek">A visually-led feature on the growing affordability gap between Scotland’s capital and lower-cost regions.</p>
+        </div>
+      </div>
+
+      <div class="story-body">
+        <div class="story-grid">
+          <div>
+            <div class="content-card">
+              <div class="number-badge">1</div>
+              <h3>The pressure is no longer just about high rent</h3>
+              <p class="lead">Renters in Edinburgh are now spending nearly a third of their income just to keep a roof over their heads — almost double the burden faced by tenants in other parts of Scotland.</p>
+              <p>While rising rents have become a nationwide issue, the pressure is far more intense in the capital. The gap between Edinburgh and lower-cost regions such as the Scottish Borders is widening, raising concerns that Scotland is increasingly operating as a two-speed housing market.</p>
+            </div>
+
+            <div class="embed">
+              <div class="embed-title">
+                <span>Average monthly rent by rental area</span>
+                <div class="embed-pill">Interactive chart</div>
+              </div>
+              <iframe src="PASTE-STORY-1-CHART-1-URL-HERE" loading="lazy"></iframe>
+              <div class="caption">Use your first chart to establish the size of the regional rent gap and give the reader an immediate visual contrast.</div>
+            </div>
+
+            <div class="content-card">
+              <div class="number-badge">2</div>
+              <h3>A market pulling away from the rest of the country</h3>
+              <p>It is not only the size of the gap that matters, but how quickly it has grown. Since 2010, rents in Lothian have more than doubled, rising from around £520 to over £1,000. In comparison, areas such as the Scottish Borders have seen far more moderate increases.</p>
+              <p>This suggests Edinburgh is not only the most expensive place to rent in Scotland — it is also pulling away from the rest of the country at a much faster rate. For renters, that points to a longer-term structural problem rather than a short-term spike.</p>
+            </div>
+
+            <div class="embed">
+              <div class="embed-title">
+                <span>Changes in renting costs by Scottish region, 2010–2025</span>
+                <div class="embed-pill">Interactive chart</div>
+              </div>
+              <iframe src="PASTE-STORY-1-CHART-2-URL-HERE" loading="lazy"></iframe>
+              <div class="caption">This is the place for your dot plot or trend visual — it gives the story movement and makes the divergence feel real.</div>
+            </div>
+
+            <div class="quote-card">
+              <strong>Human impact</strong>
+              <p>For many renters, these numbers translate into smaller savings, delayed plans to buy a home, and harder choices about where to live and work. This is where your story moves from statistics to lived reality.</p>
+            </div>
+
+            <div class="embed">
+              <div class="embed-title">
+                <span>Percentage of yearly salary spent on rent</span>
+                <div class="embed-pill">Interactive chart</div>
+              </div>
+              <iframe src="PASTE-STORY-1-CHART-3-URL-HERE" loading="lazy"></iframe>
+              <div class="caption">This should be your strongest chart because it delivers the headline claim in the clearest way.</div>
+            </div>
+
+            <div class="content-card">
+              <div class="number-badge">3</div>
+              <h3>Why supply matters</h3>
+              <p>One of the key drivers behind rising rents is the sharp decline in available rental properties. Since February 2020, the number of properties available to rent in Edinburgh has fallen from 11,558 to just 4,145. Over the same period, average monthly rent has risen from £1,101 to £1,265.</p>
+              <p>This combination of falling supply and rising demand has intensified competition for housing, pushing prices higher. The shortage reflects broader issues across the UK, including long-term underbuilding and rising house prices, which have made home ownership more difficult to access.</p>
+            </div>
+
+            <div class="split-callout">
+              <div class="mini-panel">
+                <h4>Disposable income</h4>
+                <p>Higher rents leave less room for savings, transport, food, and everyday spending.</p>
+              </div>
+              <div class="mini-panel">
+                <h4>Workforce mobility</h4>
+                <p>Unaffordable city rents can push workers further away from major employment centres.</p>
+              </div>
+              <div class="mini-panel">
+                <h4>Policy pressure</h4>
+                <p>Rent controls and supply-side solutions become harder to ignore as the gap widens.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="sticky-panel">
+            <div class="key-stat">
+              <div class="color-dots">
+                <div class="dot gold"></div>
+                <div class="dot pink"></div>
+                <div class="dot cyan"></div>
+              </div>
+              <div class="big">30%</div>
+              <div class="small">is widely treated as the point where housing costs start to cause financial strain. Edinburgh is now at or beyond that threshold.</div>
+            </div>
+
+            <div class="image-block">
+              <img src="housing.jpg" alt="Housing or rental market image" />
+              <div class="caption">Add a strong visual here — for example, Edinburgh housing, rental signage, or streetscape photography.</div>
+            </div>
+
+            <div class="content-card">
+              <h3>Design note</h3>
+              <p>You said your tutor wanted pops of colour and stronger interactivity. This layout gives you both: brighter accent colours, stronger visual hierarchy, large embeds, and space for striking images.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-heading" style="margin-top: 74px;">
+      <div class="kicker">Story two</div>
+      <h2>Mental wellbeing, age, gender, and uneven vulnerability</h2>
+      <p>The second feature uses the same immersive structure so the site feels cohesive, but with a different accent mood through imagery and emphasis.</p>
+    </div>
+
+    <section class="story" id="story2">
+      <div class="story-hero" style="background-image:url('mentalhealth.jpg');">
+        <div class="story-hero-content">
+          <div class="story-tag">Mental wellbeing feature</div>
+          <h2 class="story-title">Anxiety and loneliness in Scotland reveal stark inequalities across age and gender</h2>
+          <p class="story-dek">A visually structured feature examining who is most affected — and why broad headline statistics do not tell the full story.</p>
+        </div>
+      </div>
+
+      <div class="story-body">
+        <div class="story-grid">
+          <div>
+            <div class="content-card">
+              <div class="number-badge" style="background: var(--pink);">1</div>
+              <h3>One in three young women stand out in the data</h3>
+              <p class="lead">One in three young women in Scotland report experiencing multiple anxiety symptoms, according to the latest health data, pointing to sharp inequalities in mental wellbeing across age and gender.</p>
+              <p>Although anxiety and loneliness are often discussed as broad public health issues, the data suggests they are not evenly distributed. Some groups appear to be carrying a much heavier burden than others, challenging common assumptions about who is most affected.</p>
+            </div>
+
+            <div class="embed">
+              <div class="embed-title">
+                <span>Prevalence of anxiety symptoms by age and gender</span>
+                <div class="embed-pill">Interactive chart</div>
+              </div>
+              <iframe src="PASTE-STORY-2-CHART-1-URL-HERE" loading="lazy"></iframe>
+              <div class="caption">Lead with the strongest demographic contrast so readers can immediately see who stands out.</div>
+            </div>
+
+            <div class="content-card">
+              <div class="number-badge" style="background: var(--cyan);">2</div>
+              <h3>The gap has widened over time</h3>
+              <p>Long-term data from 2008/09 to 2023/24 shows that the gender gap in anxiety has widened over time. In 2008/09, men and women both reported rates of 9%. While male rates fluctuated more moderately over the following years, female rates rose more sharply after 2016/17.</p>
+              <p>Female anxiety prevalence peaked at 17% in 2021/22 and remained elevated at 16% in 2023/24, compared with 11% among men. This suggests recent increases in anxiety have been concentrated more heavily among women, rather than affecting all groups in the same way.</p>
+            </div>
+
+            <div class="embed">
+              <div class="embed-title">
+                <span>Trends in adults reporting two or more anxiety symptoms</span>
+                <div class="embed-pill">Interactive chart</div>
+              </div>
+              <iframe src="PASTE-STORY-2-CHART-2-URL-HERE" loading="lazy"></iframe>
+              <div class="caption">Your line chart gives this story history. It stops the feature from feeling like a single-year snapshot.</div>
+            </div>
+
+            <div class="quote-card" style="border-left-color: var(--cyan); background: linear-gradient(135deg, rgba(34,211,238,0.12), rgba(255,255,255,0.05));">
+              <strong style="color: var(--cyan);">Narrative angle</strong>
+              <p>This story works best when it challenges assumptions. Loneliness is not only an issue for older adults, and anxiety is not evenly spread across the population.</p>
+            </div>
+
+            <div class="embed">
+              <div class="embed-title">
+                <span>Adults reporting loneliness most or all of the time</span>
+                <div class="embed-pill">Interactive chart</div>
+              </div>
+              <iframe src="PASTE-STORY-2-CHART-3-URL-HERE" loading="lazy"></iframe>
+              <div class="caption">Use this section to surprise the reader and complicate expectations about where loneliness is concentrated.</div>
+            </div>
+
+            <div class="content-card">
+              <div class="number-badge" style="background: var(--green);">3</div>
+              <h3>Why these figures matter</h3>
+              <p>Anxiety and loneliness are not only personal experiences; they are also wider public health concerns. Poor mental wellbeing can affect education, work, relationships, and demand for support services. It can also place pressure on institutions that are often already under strain.</p>
+              <p>These patterns suggest the need for more targeted responses rather than one-size-fits-all approaches. If vulnerability differs across age and gender, support systems may need to be designed with those differences in mind.</p>
+            </div>
+          </div>
+
+          <aside class="sticky-panel">
+            <div class="key-stat" style="background: linear-gradient(135deg, rgba(244,114,182,0.18), rgba(34,211,238,0.12)); border-color: rgba(244,114,182,0.28);">
+              <div class="color-dots">
+                <div class="dot pink"></div>
+                <div class="dot cyan"></div>
+                <div class="dot green"></div>
+              </div>
+              <div class="big">33%</div>
+              <div class="small">of women aged 16–24 reported two or more anxiety symptoms in 2023/24 — the clearest single figure in the story.</div>
+            </div>
+
+            <div class="image-block">
+              <img src="mentalhealth.jpg" alt="Mental wellbeing image" />
+              <div class="caption">Use a thoughtful image here — not overly literal, but something that gives the story emotional weight.</div>
+            </div>
+
+            <div class="content-card">
+              <h3>Interactivity note</h3>
+              <p>If your Flourish visual lets users hover, compare, or filter categories, that absolutely counts as meaningful interactive storytelling. You do not need complex coding for it to feel dynamic.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources" id="sources">
+      <div class="kicker">Final section</div>
+      <h2 style="font-size:2rem;">Sources and finishing touches</h2>
+      <p style="color:var(--muted);">Replace these notes with your full references list. Add live Datawrapper, Flourish, and image credits here if your lecturer expects them on-page.</p>
+      <ul>
+        <li>Replace each placeholder chart URL with the real embed link from Datawrapper or Flourish.</li>
+        <li>Add your final citation list in your required referencing style.</li>
+        <li>Keep each story above the required word count excluding visualisations.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Built for the Creative Project submission. Stronger colour, clearer hierarchy, larger embeds, and more visual storytelling — without needing complicated custom code.
+  </footer>
+</body>
+</html>
