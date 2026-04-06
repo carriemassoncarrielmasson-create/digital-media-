@@ -1,0 +1,82 @@
+P3414 CREATIVE PROJECT
+Story
+Sources
+Go to Story 2
+STORY ONE | HOUSING FEATURE
+Edinburgh has Scotland’s Highest Rental Burden
+Scotland’s rental crisis is now nationwide. But Edinburgh is still feeling it most, with rents rising fastest and pulling further away from the rest of the country.
+Key affordability measure
+30.5%
+of annual salary goes on rent in Edinburgh, compared with 16.7% in the Scottish Borders. It’s not just expensive anymore, it’s uneven, and where you live now matters more than ever.
+HOUSING AFFORDABILITY IN SCOTLAND
+A market that is drifting into two different realities
+While rent has risen across the country, the scale and impact of that increase differ significantly by region. Edinburgh and nearby areas are becoming harder to access for many renters, while lower-cost regions remain comparatively affordable.
+Housing costs now affect financial security and access to opportunity, shaping long-term decisions, with pressure in Edinburgh reflected across the rest of Scotland.
+1
+The issue isn't just high rent, it's who can still afford to pay it
+Renting in Scotland has become more expensive in general, but the burden is not evenly shared. Edinburgh stands out as the clearest example of this imbalance. It is not only the most expensive place to rent, but also the place where housing costs take up the largest proportion of income.
+Affordability is a more meaningful measure than price alone. Households spend around 30% or more of their income on housing are likely to experience financial strain. In Edinburgh, that threshold has already been exceeded, placing many renters in a vulnerable position. About four in ten adults in Scotland are affected by the housing emergency, around 2.3 million people .
+When such a large share of income is spent on housing, the effects extend into everyday life. Renters may struggle to save money, respond to unexpected costs, or plan for the future, such as buying a home or having children. This shifts housing from a basic necessity into a source of ongoing financial pressure.
+Scotland is increasingly operating as a two-speed rental market, where some regions remain relatively accessible while others are becoming significantly harder to afford.
+Average monthly rent by rental area
+INTERACTIVE CHART
+The most expensive rental areas are not just slightly ahead. They are operating on a noticeably different level from the lower-cost parts of Scotland.
+2
+Edinburgh is not only expensive, but it has also been pulling away over time
+Looking at long-term trends shows that this issue is not recent. Since 2010 , rental prices in Scotland have increased across all regions, but the rate of increase has been much higher in areas such as Lothian, where Edinburgh is located. Demand for housing in Edinburgh remains high due to employment opportunities and its position as Scotland's capital city, with political and cultural influence. Its status as a major urban centre makes it a magnet for people moving for work, study, and lifestyle, suggesting a structural issue rather than a short-term fluctuation. However, supply has not kept pace with this demand , contributing to rising prices and increased competition.
+The result is a widening gap between regions. While lower-cost areas have seen more moderate increases, high-demand areas have experienced much sharper growth. Over time, this has created a clear divide in the housing market, where access to certain locations is increasingly shaped by income.
+Changes in renting costs by Scottish region, 2010 to 2025
+INTERACTIVE CHART
+Blue = 2010 | Green = 2025 | The gap has widened over time, not just a one-year spike but a more structural shift. Greater Glasgow has also seen rents rise, though not as sharply as in Edinburgh.
+Change in average monthly one-bed rent in selected Scottish rental areas
+INTERACTIVE CHART
+
+WHY THIS MATTERS BEYOND ECONOMICS
+When rents race ahead of wages, housing stops being a background expense and starts dictating life choices. People delay moving out , live in smaller or poorer quality accommodation, accept longer commutes, or leave cities where work and opportunity are concentrated.
+3
+The clearest measure of pressure is how much income goes on rent
+The proportion of income spent on housing provides a clearer picture of affordability than rent levels alone. While higher wages may exist in cities like Edinburgh, they do not necessarily offset the rent increase.
+Renters in Edinburgh are under significantly more financial pressure than those in other regions. This affects not only individuals but also wider economic behaviour. When more income is spent on housing, less is available for other forms of spending, saving, or investment.
+Rising rents, fuelled by strong demand and often outpacing income growth, place pressure on the wider economy by cutting into tenants' disposable income. As housing costs take up a larger share of earnings, households have less to spend on non-essential goods and services. Meanwhile, landlords benefit from increased income, meaning economic activity is redistributed rather than reduced overall.
+This has broader implications for financial stability and social behaviours. For young people, key workers, and lower-income households, the ability to live in high-opportunity areas is becoming increasingly limited. This reinforces inequality and reduces access to employment and education opportunities.
+In this way, housing affordability is not just an economic issue, but a social one. Social exclusion can violate the basic human need to feel a sense of belonging and may lead to serious emotional strain over time. This can affect both mental and physical health, weaken social ties, and make it harder for people to access work or education.
+How much of your yearly salary goes on rent?
+INTERACTIVE CHART
+
+Annual rent compared with annual income in selected Scottish cities
+INTERACTIVE CHART
+Higher earnings do not automatically produce affordability when rent rises with them.
+4
+Falling supply helps explain rising pressure
+One key driver of rising rent is the decline in available housing. In Edinburgh, the number of properties available to rent has decreased significantly in recent years, while demand has remained high.
+This imbalance between supply and demand creates competition among renters, allowing prices to increase. It also changes the experience of renting, meaning individuals may feel pressure to accept higher prices, which only intensifies the problem.
+The shortage of housing reflects broader issues across Scotland, including limited construction and increased demand for urban living. Without intervention, this imbalance is likely to continue, further increasing the affordability gap between regions.
+5
+A widening social divide
+For many people, particularly those on lower or average incomes, the choice is no longer between different types of housing, but between staying or leaving altogether.
+If key workers, young professionals, and students are priced out, this can affect the functioning of essential services and the diversity of urban life. At the same time, pressure may spread into surrounding areas as people search for more affordable options.
+This reflects a broader trend where housing markets are becoming more unequal. Scotland's rental system is not just becoming more expensive, but more uneven. That unevenness may be the most important issue for policymakers and renters alike.
+6
+Conclusion
+Scotland's housing crisis cannot be understood through national averages alone. The data shows a clear divide between regions, with Edinburgh experiencing significantly higher levels of pressure. Rising rent and increasing demand have combined to create a market that is increasingly difficult to access for many renters.
+30%
+is often used as a warning line in affordability debates. When housing costs move towards or beyond that point, the risk of financial strain rises sharply. Edinburgh is already there.
+A 2-speed
+rental market is what’s really going on. Scotland is still one market in name, but people aren’t experiencing it that way.
+
+Edinburgh remains one of Scotland's most attractive places to live, unsurprising the appeal to live there.
+Sources
+	•	The Scottish Government (2025). Private Sector Rent Statistics, Scotland, 2010 to 2025.
+	•	Office for National Statistics. Earnings and hours worked, place of work by local authority.
+	•	Macartney, I. (2025). International Definitions and Measures of Affordable Housing and Current Local Practices in Scotland.
+	•	Owen, E. (2020). Covid Creates Two-Speed Rental Market.
+	•	The Cockburn Association (2025). Edinburgh's Housing Emergency - 2 years on.
+	•	Works in Progress. The Housing Theory of Everything.
+	•	Phillip Shaw Ltd. UK rental market experiences record high rent increases.
+	•	ScienceDirect. Housing affordability and supply constraints study.
+	•	Institute for Fiscal Studies. Housing quality and affordability for lower-income households.
+	•	Shelter Scotland (2024). Scotland’s housing emergency impacting 2.3 million adults.
+	•	Edinbnb. Property investment and housing demand in Edinburgh.
+	•	TutorChase. Market imbalances and supply-demand issues.
+	•	Understanding Society (2024). Major life events are being delayed.
+Story One : page for the Creative Project submission.
