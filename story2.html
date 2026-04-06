@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Story 2 | Anxiety and Loneliness in Scotland</title>
+  <style>
+    :root {
+      --bg: #f6f3fb;
+      --bg-soft: #ede7f7;
+      --bg-accent: #e4f3ef;
+      --text: #1d2130;
+      --muted: #5b6074;
+      --ink: #2a1f45;
+      --ink-soft: #44356e;
+      --plum: #6d4cc7;
+      --plum-soft: #d9cdf5;
+      --sage: #76b7a1;
+      --sage-soft: #d8efe7;
+      --rose: #d96f8d;
+      --card: rgba(255,255,255,0.88);
+      --border: rgba(42, 31, 69, 0.12);
+      --shadow: 0 18px 42px rgba(42, 31, 69, 0.12);
+      --max: 1160px;
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(109,76,199,0.16), transparent 22%),
+        radial-gradient(circle at top right, rgba(118,183,161,0.18), transparent 26%),
+        linear-gradient(180deg, #f7f4fb 0%, #f3eef9 48%, #eef7f4 100%);
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--ink-soft);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 244, 251, 0.9);
+      border-bottom: 1px solid rgba(42, 31, 69, 0.08);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+      color: var(--ink);
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(42, 31, 69, 0.1);
+      transition: transform 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, var(--plum-soft), #f5f0ff);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 20px 64px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(245, 241, 251, 0.55), rgba(245, 241, 251, 0.9)),
+        url('mental-health.jpg') center/cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .hero-copy,
+    .hero-panel {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(42, 31, 69, 0.12);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--plum-soft), #efe8ff);
+      color: var(--ink);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+
+    .subheading {
+      margin: 0;
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .hero-stat {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-stat .mini {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--bg-accent);
+      color: var(--ink-soft);
+      font-weight: 700;
+      font-size: 0.88rem;
+      width: fit-content;
+    }
+
+    .hero-stat .value {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1;
+      font-weight: 900;
+      color: var(--rose);
+    }
+
+    .hero-stat .label {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    main {
+      padding: 40px 0 80px;
+    }
+
+    .intro {
+      max-width: 830px;
+      margin: 0 0 34px;
+    }
+
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 900;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+      color: var(--ink);
+    }
+
+    .intro p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .card,
+    .embed,
+    .quote,
+    .image-card,
+    .sources {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .card,
+    .embed,
+    .quote,
+    .sources {
+      padding: 24px;
+    }
+
+    .card + .card,
+    .card + .embed,
+    .embed + .card,
+    .embed + .embed,
+    .quote + .card,
+    .quote + .embed {
+      margin-top: 22px;
+    }
+
+    .number {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--plum), #8e70df);
+      color: white;
+      font-weight: 900;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 24px rgba(109,76,199,0.24);
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      font-size: 1.14rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .embed-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .embed-pill {
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--sage-soft);
+      color: #255647;
+      border: 1px solid rgba(118,183,161,0.22);
+      font-weight: 800;
+    }
+
+    .embed iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      background: #fff;
+      min-height: 420px;
+    }
+
+    .caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    aside {
+      position: sticky;
+      top: 88px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .side-stat {
+      padding: 24px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #efe8ff, #ddf2eb);
+      border: 1px solid rgba(42, 31, 69, 0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .side-stat .big {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .side-stat .small {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .quote {
+      border-left: 6px solid var(--rose);
+      background: linear-gradient(135deg, rgba(217,111,141,0.08), rgba(255,255,255,0.8));
+    }
+
+    .quote strong {
+      display: block;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    .image-card {
+      overflow: hidden;
+      padding: 0;
+      background: #fff;
+    }
+
+    .image-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .image-card .caption {
+      padding: 16px 18px 18px;
+      margin: 0;
+    }
+
+    .sources {
+      margin-top: 42px;
+    }
+
+    ul.sources-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .flourish-embed {
+      margin-top: 8px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    footer {
+      padding: 32px 20px 60px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-content,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2.45rem;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .embed iframe {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">P3414 Creative Project</div>
+      <div class="nav">
+        <a href="#story">Story</a>
+        <a href="#sources">Sources</a>
+        <a href="story1.html">Go to Story 1</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-copy">
+        <div class="eyebrow">Story Two | Mental wellbeing feature</div>
+        <h1>One in three young women in Scotland reports anxiety symptoms</h1>
+        <p class="subheading">
+          New Scottish data shows that mental well-being is not under pressure in the same way for everyone. Anxiety is hitting younger women hardest, while loneliness follows a different pattern across age and gender.
+        </p>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-stat">
+          <div class="mini">Headline figure</div>
+          <div class="value">33%</div>
+          <div class="label">
+            of women aged 16 to 24 reported two or more anxiety symptoms in 2023/24, compared with 22% of men of the same age. The gap is sharp and tells a larger story about inequality in mental well-being.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="intro" id="story">
+      <div class="kicker">Anxiety and loneliness in Scotland</div>
+      <h2>The pressure is not spread evenly</h2>
+      <p>
+        Anxiety and loneliness are often discussed as broad national problems. The data tells a more precise story. Some groups are carrying far more of the weight than others, and the pattern changes depending on whether you look at age, gender, or both together.
+      </p>
+      <p>
+        This story focuses on where that pressure falls. Young women stand out most clearly in the anxiety data, while loneliness cuts across life stages in less expected ways. Together, the figures point to a mental well-being gap that is social as well as medical.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <div class="number">1</div>
+          <h3>The sharpest anxiety levels are among young women</h3>
+          <p class="lead">
+            The clearest figure in the data is also the hardest to ignore. One in three women aged 16 to 24 reported two or more anxiety symptoms in 2023/24.
+          </p>
+          <p>
+            That is the highest rate across any age and gender group in the Scottish Health Survey. Men in the same age band also reported elevated anxiety, but at a lower level. The gap matters because it suggests that early adulthood is not only a period of transition, but one where mental strain is falling unevenly.
+          </p>
+          <p>
+            Women reported higher anxiety prevalence than men across most working-age groups under 65. The contrast is strongest in younger adulthood, then gradually narrows later in life. This gives the story its central frame: mental well-being is shaped by demographic inequality, not just by individual experience.
+          </p>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>Prevalence of two or more anxiety symptoms by age and gender</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <iframe title="Prevalence of Two or More Anxiety Symptoms by Age and Gender, Scotland (2023/24)" aria-label="Grouped column chart" id="datawrapper-chart-SZTLd" src="https://datawrapper.dwcdn.net/SZTLd/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="648" data-external="1"></iframe>
+          <div class="caption">
+            The gap is widest among younger adults. Anxiety is not distributed evenly across the population, and age alone does not explain it.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="number">2</div>
+          <h3>This did not appear overnight</h3>
+          <p>
+            The longer trend matters because it shows that the current picture is not just a one-year spike. In 2008/09, men and women both reported anxiety prevalence of 9%. Since then, the lines have moved apart.
+          </p>
+          <p>
+            Male rates have fluctuated, but much more moderately. Female rates rose more sharply from 2016/17 onwards, peaked at 17% in 2021/22, and remained elevated at 16% in 2023/24. That makes the present gap more than a temporary blip. It suggests a sustained shift in who is most affected.
+          </p>
+          <p>
+            Framed this way, the story is not only about rising anxiety. It is about a widening gender divide within that rise.
+          </p>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>Trends in adults reporting two or more anxiety symptoms, by gender</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <iframe title="Trends in Adults Reporting Two or More Anxiety Symptoms, by Gender (2008/09-2023/24)" aria-label="Line chart" id="datawrapper-chart-Y635v" src="https://datawrapper.dwcdn.net/Y635v/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="481" data-external="1"></iframe>
+          <div class="caption">
+            The distance between the two lines is the real story here. Recent increases in anxiety have not been felt equally.
+          </div>
+        </div>
+
+        <div class="quote">
+          <strong>Why this matters</strong>
+          <p>
+            Anxiety does not stay neatly contained within health statistics. It can affect education, employment, finances, relationships, and confidence. When the burden is concentrated within particular groups, the consequences are likely to be concentrated too.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">3</div>
+          <h3>Loneliness tells a different story</h3>
+          <p>
+            If anxiety is concentrated most clearly among young women, loneliness is more uneven and less predictable. The 2024 loneliness data complicates the familiar idea that isolation is mainly an older-age issue.
+          </p>
+          <p>
+            Among women, the highest rate was again among those aged 16 to 24, where 10% reported feeling lonely most or all of the time. Among men, the highest rate was recorded in the 45 to 54 age group at 13%.
+          </p>
+          <p>
+            Older adults reported comparatively lower levels than many people might assume. That does not mean loneliness disappears in later life, but it does suggest vulnerability looks different across the life course. The pattern changes depending on whose experience is being measured.
+          </p>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>Adults reporting feeling lonely most or all of the time, by age and gender</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <div class="flourish-embed flourish-chart" data-src="visualisation/27882826">
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
+            <noscript>
+              <img src="https://public.flourish.studio/visualisation/27882826/thumbnail" width="100%" alt="visualisation" />
+            </noscript>
+          </div>
+          <div class="caption">
+            Loneliness is not confined to later life. The pattern shifts by gender, with mid-life men and younger women standing out most.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="number">4</div>
+          <h3>This is a public health issue, but not only a public health issue</h3>
+          <p>
+            The scale of the problem reaches far beyond survey responses. Poor mental wellbeing is linked to lower educational attainment, weaker workplace performance, and heavier demand on services. Loneliness is also associated with negative physical and psychological outcomes.
+          </p>
+          <p>
+            That wider impact is already being felt. Police Scotland has warned that mental health-related incidents are putting increasing pressure on frontline services, with officers attending around 14,500 mental health call-outs each month. That points to a system where distress is often showing up in places not designed to deal with it.
+          </p>
+          <p>
+            Taken together, the anxiety and loneliness data suggest a broader social strain. The issue is not only who feels unwell, but how that strain ripples outward into public services and everyday life.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">5</div>
+          <h3>What the figures suggest for policy</h3>
+          <p>
+            A single national response is unlikely to be enough when the patterns are so uneven. Young women appear to face the sharpest anxiety burden, while loneliness peaks in different places depending on gender and stage of life.
+          </p>
+          <p>
+            That means support has to be targeted as well as expanded. Interventions aimed at students and younger adults may not reach mid-life men experiencing loneliness. Likewise, broad messaging about mental wellbeing can miss the structural pressures affecting specific groups.
+          </p>
+          <p>
+            The data does not point to one crisis with one cause. It points to several overlapping pressures that need more precise responses.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">6</div>
+          <h3>Conclusion</h3>
+          <p>
+            Scotland’s mental wellbeing story is not just about whether anxiety or loneliness are rising. It is about where those pressures are concentrated, and who is being asked to absorb them.
+          </p>
+          <p>
+            Young women stand out most clearly in the anxiety data. Loneliness follows a different route, peaking at other stages of life and in different ways for men and women. The common thread is inequality. Mental strain is not being experienced equally, and the response should not pretend that it is.
+          </p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="side-stat">
+          <div class="big">33%</div>
+          <div class="small">
+            of women aged 16 to 24 reported two or more anxiety symptoms. That is the strongest single figure in the story, and it sets the tone for the whole piece.
+          </div>
+        </div>
+
+        <div class="side-stat">
+          <div class="big">13%</div>
+          <div class="small">
+            of men aged 45 to 54 reported feeling lonely most or all of the time in 2024. Loneliness is not only an issue of old age.
+          </div>
+        </div>
+
+        <div class="image-card">
+          <img src="mental-health.jpg" alt="Young adult sitting alone outdoors in Scotland" />
+          <div class="caption">
+            Add a more human image here to reinforce the social side of the story rather than making it feel purely statistical.
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="sources" id="sources">
+      <h3>Sources</h3>
+      <ul class="sources-list">
+        <li><a href="https://www.gov.scot/publications/scottish-health-survey-2024-volume-1-main-report/documents/" target="_blank" rel="noopener noreferrer">The Scottish Government (2025). The Scottish Health Survey 2024: volume 1 main report.</a></li>
+        <li><a href="https://www.bbc.co.uk/news/articles/cj01v8jdn10o" target="_blank" rel="noopener noreferrer">Cowan, D. (2025). Police Scotland warn mental health call-outs are ‘unsustainable’. BBC News.</a></li>
+        <li><a href="https://www.who.int/news-room/fact-sheets/detail/coronavirus-disease-(covid-19)" target="_blank" rel="noopener noreferrer">World Health Organisation (2023). Coronavirus disease (COVID-19).</a></li>
+        <li>Shankar, R. (2023). Loneliness, Social Isolation, and its Effects on Physical and Mental Health. <em>Missouri Medicine</em>, 120(2), 106–108.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Story Two : page for the Creative Project submission.
+  </footer>
+
+  <script type="text/javascript">
+    window.addEventListener("message", function(a) {
+      if (void 0 !== a.data["datawrapper-height"]) {
+        var e = document.querySelectorAll("iframe");
+        for (var t in a.data["datawrapper-height"]) {
+          for (var r, i = 0; r = e[i]; i++) {
+            if (r.contentWindow === a.source) {
+              var d = a.data["datawrapper-height"][t] + "px";
+              r.style.height = d;
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
