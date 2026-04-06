@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Story 1 | Housing affordability in Scotland</title>
+
+  <style>
+    :root {
+      --bg: #fffdf7;
+      --bg-soft: #fff4cc;
+      --bg-accent: #eaf8ff;
+      --text: #16324f;
+      --muted: #51657d;
+      --navy: #1f4e8c;
+      --navy-dark: #15355e;
+      --gold: #f2b705;
+      --gold-soft: #ffe48a;
+      --cyan: #28c2e4;
+      --coral: #ff8b61;
+      --panel: rgba(255, 255, 255, 0.86);
+      --border: rgba(31, 78, 140, 0.15);
+      --shadow: 0 18px 45px rgba(21, 53, 94, 0.12);
+      --max: 1160px;
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(40, 194, 228, 0.18), transparent 24%),
+        radial-gradient(circle at top right, rgba(242, 183, 5, 0.18), transparent 28%),
+        linear-gradient(180deg, #fffdf7 0%, #fff8e7 48%, #f7fcff 100%);
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 253, 247, 0.88);
+      border-bottom: 1px solid rgba(31, 78, 140, 0.08);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: centre;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+      color: var(--navy-dark);
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(31, 78, 140, 0.1);
+      transition: transform 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, var(--gold-soft), #fff7d1);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 20px 64px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 252, 245, 0.42), rgba(255, 252, 245, 0.82)),
+        url("housing.jpg") centre/cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .hero-copy,
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(31, 78, 140, 0.12);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold-soft), #fff3ba);
+      color: var(--navy-dark);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      color: var(--navy-dark);
+    }
+
+    .subheading {
+      margin: 0;
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .hero-stat {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-stat .value {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1;
+      font-weight: 900;
+      color: var(--coral);
+    }
+
+    .hero-stat .label {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-stat .mini {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--bg-accent);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.88rem;
+      width: fit-content;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    main {
+      padding: 40px 0 80px;
+    }
+
+    .intro {
+      max-width: 800px;
+      margin: 0 0 34px;
+    }
+
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+      color: var(--navy-dark);
+    }
+
+    .intro p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .card,
+    .embed,
+    .quote,
+    .image-card,
+    .sources {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .card,
+    .embed,
+    .quote,
+    .sources {
+      padding: 24px;
+    }
+
+    .card + .card,
+    .card + .embed,
+    .embed + .card,
+    .embed + .embed,
+    .quote + .card,
+    .quote + .embed {
+      margin-top: 22px;
+    }
+
+    .number {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: grid;
+      place-items: centre;
+      background: linear-gradient(135deg, var(--gold), #ffd95a);
+      color: var(--navy-dark);
+      font-weight: 900;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 24px rgba(242, 183, 5, 0.24);
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      line-height: 1.15;
+      color: var(--navy-dark);
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      font-size: 1.14rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .embed-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: centre;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .embed-pill {
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--bg-accent);
+      color: var(--navy);
+      border: 1px solid rgba(40, 194, 228, 0.2);
+      font-weight: 800;
+    }
+
+    .embed iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      background: #fff;
+      min-height: 420px;
+    }
+
+    .caption {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    aside {
+      position: sticky;
+      top: 88px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .side-stat {
+      padding: 24px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #fff2b8, #dff7ff);
+      border: 1px solid rgba(31, 78, 140, 0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .side-stat .big {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: var(--navy-dark);
+    }
+
+    .side-stat .small {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .quote {
+      border-left: 6px solid var(--cyan);
+      background: linear-gradient(135deg, rgba(40, 194, 228, 0.11), rgba(255, 255, 255, 0.75));
+    }
+
+    .quote strong {
+      display: block;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    .image-card {
+      overflow: hidden;
+      padding: 0;
+      background: #fff;
+    }
+
+    .image-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .image-card .caption {
+      padding: 16px 18px 18px;
+      margin: 0;
+    }
+
+    .sources {
+      margin-top: 42px;
+    }
+
+    ul.sources-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 32px 20px 60px;
+      text-align: centre;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-content,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .embed iframe {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">P3414 Creative Project</div>
+      <div class="nav">
+        <a href="#story">Story</a>
+        <a href="#sources">Sources</a>
+        <a href="story2.html">Go to Story 2</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-copy">
+        <div class="eyebrow">Story One | Housing feature</div>
+        <h1>Edinburgh has Scotland’s Highest Rental Burden</h1>
+        <p class="subheading">
+          Scotland’s rental crisis is now nationwide. But Edinburgh is still feeling it most, with rents rising fastest and pulling further away from the rest of the country.
+        </p>
+      </div>
+
+      <div class="hero-panel">
+        <div class="hero-stat">
+          <div class="mini">Key affordability measure</div>
+          <div class="value">30.5%</div>
+          <div class="label">
+            of annual salary goes on rent in Edinburgh, compared with 16.7% in the Scottish Borders.
+            It’s not just expensive anymore, it’s uneven, and where you live now matters more than ever.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="intro" id="story">
+      <div class="kicker">Housing affordability in Scotland</div>
+      <h2>A market that is drifting into two different realities</h2>
+      <p>
+        While rent has risen across the country, the scale and impact of that increase differ significantly by region.
+        Edinburgh and nearby areas are becoming harder to access for many renters, while lower-cost regions remain comparatively affordable.
+      </p>
+      <p>
+        Housing costs now affect financial security and access to opportunity, shaping long-term decisions, with pressure in Edinburgh reflected across the rest of Scotland.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <div class="number">1</div>
+          <h3>The issue isn't just high rent, it's who can still afford to pay it</h3>
+          <p class="lead">
+            Renting in Scotland has become more expensive in general, but the burden is not evenly shared.
+            Edinburgh stands out as the clearest example of this imbalance. It is not only the most expensive place to rent,
+            but also the place where housing costs take up the largest proportion of income.
+          </p>
+          <p>
+            Affordability is a more meaningful measure than price alone.
+            <a href="https://scothealthequity.org/international-definitions-and-measures-of-affordable-housing-and-current-local-practices-in-scotland/" target="_blank" rel="noopener noreferrer">Households spend around 30%</a>
+            or more of their income on housing are likely to experience financial strain. In Edinburgh, that threshold has already been exceeded,
+            placing many renters in a vulnerable position. About four in ten adults in Scotland are affected by the housing emergency, around
+            <a href="https://scotland.shelter.org.uk/media/press_releases/scotlands_housing_emergency_now_impacting_23_million_adults_shelter_scotland_warns" target="_blank" rel="noopener noreferrer">2.3 million people</a>.
+          </p>
+          <p>
+            When such a large share of income is spent on housing, the effects extend into everyday life.
+            Renters may struggle to save money, respond to unexpected costs, or plan for the future, such as buying a home or having children.
+            This shifts housing from a basic necessity into a source of ongoing financial pressure.
+          </p>
+          <p>
+            <a href="https://www.theurbandeveloper.com/articles/covid-creates-two-speed-rental-market" target="_blank" rel="noopener noreferrer">Scotland is increasingly operating as a two-speed rental market,</a>
+            where some regions remain relatively accessible while others are becoming significantly harder to afford.
+          </p>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>Average monthly rent by rental area</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <iframe
+            title="Average Monthly Rent (£) for 1-Bed Properties in Scotland by Rental Area (2025)"
+            aria-label="Bar Chart"
+            id="datawrapper-chart-qFbhY"
+            src="https://datawrapper.dwcdn.net/qFbhY/2/"
+            scrolling="no"
+            frameborder="0"
+            style="width: 0; min-width: 100% !important; border: none;"
+            height="578"
+            data-external="1">
+          </iframe>
+          <div class="caption">
+            The most expensive rental areas are not just slightly ahead. They are operating on a noticeably different level from the lower-cost parts of Scotland.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="number">2</div>
+          <h3>Edinburgh is not only expensive, but it has also been pulling away over time</h3>
+          <p>
+            Looking at long-term trends shows that this issue is not recent.
+            <a href="https://www.gov.scot/publications/private-sector-rent-statistics-scotland-2010-to-2025/documents" target="_blank" rel="noopener noreferrer">Since 2010</a>,
+            rental prices in Scotland have increased across all regions, but the rate of increase has been much higher in areas such as Lothian, where Edinburgh is located.
+            Demand for housing in Edinburgh remains high due to
+            <a href="https://edinbnb.co.uk/property-investment-uk/#:~:text=Edinburgh's%20property%20prices%20should%20rise,multiple%20property%20types%20and%20locations." target="_blank" rel="noopener noreferrer">employment opportunities</a>
+            and its position as Scotland's capital city, with political and cultural influence.
+            Its status as a major urban centre makes it a magnet for people moving for work, study, and lifestyle, suggesting a structural issue rather than a short-term fluctuation.
+            However,
+            <a href="https://www.tutorchase.com/answers/ib/economics/why-do-consumers-often-face-disadvantages-in-markets-with-information-imbalances" target="_blank" rel="noopener noreferrer">supply has not kept pace with this demand</a>,
+            contributing to rising prices and increased competition.
+          </p>
+          <p>
+            The result is a widening gap between regions. While lower-cost areas have seen more moderate increases, high-demand areas have experienced much sharper growth.
+            Over time, this has created a clear divide in the housing market, where access to certain locations is increasingly shaped by income.
+          </p>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>Changes in renting costs by Scottish region, 2010 to 2025</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <iframe
+            title="Changes in Renting Costs (£), by Scottish Region, from 2010 to 2025."
+            aria-label="Range Plot"
+            id="datawrapper-chart-YfL8K"
+            src="https://datawrapper.dwcdn.net/YfL8K/1/"
+            scrolling="no"
+            frameborder="0"
+            style="width: 0; min-width: 100% !important; border: none;"
+            height="154"
+            data-external="1">
+          </iframe>
+          <div class="caption">
+            Blue = 2010 | Green = 2025 | The gap has widened over time, not just a one-year spike but a more structural shift.
+            Greater Glasgow has also seen rents rise, though not as sharply as in Edinburgh.
+          </div>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>Change in average monthly one-bed rent in selected Scottish rental areas</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <iframe
+            title="Change in Average Monthly 1-Bed Rent in Selected Scottish Rental Areas (2010–2025)"
+            aria-label="Line chart"
+            id="datawrapper-chart-9OWlA"
+            src="https://datawrapper.dwcdn.net/9OWlA/1/"
+            scrolling="no"
+            frameborder="0"
+            style="width: 0; min-width: 100% !important; border: none;"
+            height="446"
+            data-external="1">
+          </iframe>
+        </div>
+
+        <div class="quote">
+          <strong>Why this matters beyond economics</strong>
+          <p>
+            When rents race ahead of wages, housing stops being a background expense and starts dictating life choices.
+            <a href="https://www.understandingsociety.ac.uk/blog/2024/07/10/major-life-events-delayed/#:~:text=Over%20the%20last%20two%20decades,or%20on%20a%20low%20wage." target="_blank" rel="noopener noreferrer">People delay moving out</a>,
+            live in smaller or poorer quality accommodation, accept longer commutes, or leave cities where work and opportunity are concentrated.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">3</div>
+          <h3>The clearest measure of pressure is how much income goes on rent</h3>
+          <p>
+            The proportion of income spent on housing provides a clearer picture of affordability than rent levels alone.
+            While higher wages may exist in cities like Edinburgh, they do not necessarily offset the rent increase.
+          </p>
+          <p>
+            Renters in Edinburgh are under significantly more financial pressure than those in other regions.
+            This affects not only individuals but also wider economic behaviour. When more income is spent on housing,
+            less is available for other forms of spending, saving, or investment.
+          </p>
+          <p>
+            <a href="https://worksinprogress.co/issue/the-housing-theory-of-everything/#:~:text=So%20the%20obvious%20effect%20of,Kade%20Byrand" target="_blank" rel="noopener noreferrer">Rising rents, fuelled by strong demand and often outpacing income growth, place pressure on the wider economy by cutting into tenants' disposable income</a>.
+            As housing costs take up a larger share of earnings, households have less to spend on non-essential goods and services.
+            Meanwhile, landlords benefit from increased income, meaning economic activity is redistributed rather than reduced overall.
+          </p>
+          <p>
+            This has broader implications for financial stability and social behaviours.
+            For young people, key workers, and lower-income households, the ability to live in high-opportunity areas is becoming increasingly limited.
+            This reinforces inequality and reduces access to employment and education opportunities.
+          </p>
+          <p>
+            In this way, housing affordability is not just an economic issue, but a social one.
+            <a href="https://embolden.world/mental-distress-and-social-exclusion/#:~:text=September%2012%2C%202021,at%20the%20cellular/neural%20level." target="_blank" rel="noopener noreferrer">Social exclusion can violate the basic human need to feel a sense of belonging and may lead to serious emotional strain over time</a>.
+            This can affect both mental and physical health, weaken social ties, and make it harder for people to access work or education.
+          </p>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>How much of your yearly salary goes on rent?</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <iframe
+            title="How much of your yearly salary goes on rent?"
+            aria-label="Bar Chart"
+            id="datawrapper-chart-wLJ9e"
+            src="https://datawrapper.dwcdn.net/wLJ9e/1/"
+            scrolling="no"
+            frameborder="0"
+            style="width: 0; min-width: 100% !important; border: none;"
+            height="190"
+            data-external="1">
+          </iframe>
+        </div>
+
+        <div class="embed">
+          <div class="embed-title">
+            <strong>Annual rent compared with annual income in selected Scottish cities</strong>
+            <div class="embed-pill">Interactive chart</div>
+          </div>
+          <iframe
+            title="How Does Annual Rent Compare to Annual Income in Selected Scottish Cities?"
+            aria-label="Small multiple donut chart"
+            id="datawrapper-chart-0UQ4b"
+            src="https://datawrapper.dwcdn.net/0UQ4b/1/"
+            scrolling="no"
+            frameborder="0"
+            style="width: 0; min-width: 100% !important; border: none;"
+            height="648"
+            data-external="1">
+          </iframe>
+          <div class="caption">
+            Higher earnings do not automatically produce affordability when rent rises with them.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="number">4</div>
+          <h3>Falling supply helps explain rising pressure</h3>
+          <p>
+            One key driver of rising rent is the decline in available housing.
+            <a href="https://www.cockburnassociation.org.uk/news/edinburghs-housing-emergency-2-years-on-so-what-next/" target="_blank" rel="noopener noreferrer">In Edinburgh, the number of properties available to rent has decreased significantly in recent years, while demand has remained high</a>.
+          </p>
+          <p>
+            This imbalance between supply and demand creates
+            <a href="https://www.phillipshawltd.co.uk/articles/uk-rental-market-experiences-record-high-rent-increases#/" target="_blank" rel="noopener noreferrer">competition among renters</a>,
+            allowing prices to increase. It also changes the experience of renting, meaning individuals may feel pressure to accept higher prices, which only intensifies the problem.
+          </p>
+          <p>
+            The shortage of housing reflects broader issues across Scotland, including limited construction and increased demand for urban living.
+            Without intervention, this imbalance is likely to continue, further increasing the affordability gap between regions.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">5</div>
+          <h3>A widening social divide</h3>
+          <p>
+            For many people, particularly those on lower or average incomes, the choice is no longer between different types of housing, but between staying or leaving altogether.
+          </p>
+          <p>
+            If key workers, young professionals, and students are
+            <a href="https://www.sciencedirect.com/org/science/article/pii/S1753827021000996" target="_blank" rel="noopener noreferrer">priced out</a>,
+            this can affect the functioning of essential services and the diversity of urban life.
+            At the same time, pressure may spread into surrounding areas as people search for more affordable options.
+          </p>
+          <p>
+            This reflects a broader trend where housing markets are becoming more unequal.
+            Scotland's rental system is not just becoming more expensive, but more uneven.
+            That unevenness may be the most important issue for policymakers and renters alike.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="number">6</div>
+          <h3>Conclusion</h3>
+          <p>
+            Scotland's housing crisis cannot be understood through national averages alone.
+            The data shows a clear divide between regions, with Edinburgh experiencing significantly higher levels of pressure.
+            Rising rent and increasing demand have combined to create a market that is increasingly difficult to access for many renters.
+          </p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="side-stat">
+          <div class="big">30%</div>
+          <div class="small">
+            is often used as a warning line in affordability debates.
+            When housing costs move towards or beyond that point, the risk of financial strain rises sharply.
+            Edinburgh is already there.
+          </div>
+        </div>
+
+        <div class="side-stat">
+          <div class="big">A 2-speed</div>
+          <div class="small">
+            rental market is what’s really going on.
+            Scotland is still one market in name, but people aren’t experiencing it that way.
+          </div>
+        </div>
+
+        <div class="image-card">
+          <img src="housing.jpg" alt="Housing rooftops in Edinburgh" />
+          <div class="caption">
+            Edinburgh remains one of Scotland's most attractive places to live, which helps explain the pressure to stay close to the city.
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="sources" id="sources">
+      <h3>Sources</h3>
+      <ul class="sources-list">
+        <li><a href="https://www.gov.scot/publications/private-sector-rent-statistics-scotland-2010-to-2025/documents" target="_blank" rel="noopener noreferrer">The Scottish Government (2025). Private Sector Rent Statistics, Scotland, 2010 to 2025.</a></li>
+        <li><a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/datasets/placeofworkbylocalauthorityashetable7" target="_blank" rel="noopener noreferrer">Office for National Statistics. Earnings and hours worked, place of work by local authority.</a></li>
+        <li><a href="https://scothealthequity.org/international-definitions-and-measures-of-affordable-housing-and-current-local-practices-in-scotland/" target="_blank" rel="noopener noreferrer">Macartney, I. (2025). International Definitions and Measures of Affordable Housing and Current Local Practices in Scotland.</a></li>
+        <li><a href="https://www.theurbandeveloper.com/articles/covid-creates-two-speed-rental-market" target="_blank" rel="noopener noreferrer">Owen, E. (2020). Covid Creates Two-Speed Rental Market.</a></li>
+        <li><a href="https://www.cockburnassociation.org.uk/news/edinburghs-housing-emergency-2-years-on-so-what-next/" target="_blank" rel="noopener noreferrer">The Cockburn Association (2025). Edinburgh's Housing Emergency - 2 years on.</a></li>
+        <li><a href="https://worksinprogress.co/issue/the-housing-theory-of-everything/" target="_blank" rel="noopener noreferrer">Works in Progress. The Housing Theory of Everything.</a></li>
+        <li><a href="https://www.phillipshawltd.co.uk/articles/uk-rental-market-experiences-record-high-rent-increases#/" target="_blank" rel="noopener noreferrer">Phillip Shaw Ltd. UK rental market experiences record high rent increases.</a></li>
+        <li><a href="https://www.sciencedirect.com/org/science/article/pii/S1753827021000996" target="_blank" rel="noopener noreferrer">ScienceDirect. Housing affordability and supply constraints study.</a></li>
+        <li><a href="https://ifs.org.uk/publications/housing-quality-and-affordability-lower-income-households" target="_blank" rel="noopener noreferrer">Institute for Fiscal Studies. Housing quality and affordability for lower-income households.</a></li>
+        <li><a href="https://scotland.shelter.org.uk/media/press_releases/scotlands_housing_emergency_now_impacting_23_million_adults_shelter_scotland_warns" target="_blank" rel="noopener noreferrer">Shelter Scotland (2024). Scotland’s housing emergency impacting 2.3 million adults.</a></li>
+        <li><a href="https://edinbnb.co.uk/property-investment-uk/#:~:text=Edinburgh's%20property%20prices%20should%20rise,multiple%20property%20types%20and%20locations." target="_blank" rel="noopener noreferrer">Edinbnb. Property investment and housing demand in Edinburgh.</a></li>
+        <li><a href="https://www.tutorchase.com/answers/ib/economics/why-do-consumers-often-face-disadvantages-in-markets-with-information-imbalances" target="_blank" rel="noopener noreferrer">TutorChase. Market imbalances and supply-demand issues.</a></li>
+        <li><a href="https://www.understandingsociety.ac.uk/blog/2024/07/10/major-life-events-delayed/#:~:text=Over%20the%20last%20two%20decades,or%20on%20a%20low%20wage." target="_blank" rel="noopener noreferrer">Understanding Society (2024). Major life events are being delayed.</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Story One : page for the Creative Project submission.
+  </footer>
+
+  <script>
+    window.addEventListener("message", function (a) {
+      if (typeof a.data["datawrapper-height"] !== "undefined") {
+        const iframes = document.querySelectorAll("iframe");
+        for (const chartId in a.data["datawrapper-height"]) {
+          for (let i = 0; i < iframes.length; i++) {
+            const iframe = iframes[i];
+            if (iframe.contentWindow === a.source) {
+              iframe.style.height = a.data["datawrapper-height"][chartId] + "px";
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
