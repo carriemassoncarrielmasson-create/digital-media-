@@ -52,7 +52,7 @@
       color: var(--deep);
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
-      transition: color 0.25s ease;
+      transition: color 0.25s ease, text-decoration-color 0.25s ease;
     }
 
     a:hover {
@@ -438,6 +438,20 @@
       color: #edf2fb;
     }
 
+    /* Updated split-band link styles */
+    .split-band a,
+    .split-band .section-body a {
+      color: #ffd166;
+      text-decoration-color: #ffd166;
+      font-weight: 700;
+    }
+
+    .split-band a:hover,
+    .split-band .section-body a:hover {
+      color: #ffffff;
+      text-decoration-color: #ffffff;
+    }
+
     .split-band .chart-block {
       background: rgba(255,255,255,0.09);
       border: 1px solid rgba(255,255,255,0.18);
@@ -547,6 +561,29 @@
 
     .sources li {
       margin-bottom: 12px;
+    }
+
+    .all-links {
+      padding: 28px 0 10px;
+      border-top: 1px solid var(--line);
+      margin-top: 24px;
+    }
+
+    .all-links h3 {
+      margin: 0 0 16px;
+      font-size: 1.7rem;
+      color: var(--deep);
+    }
+
+    .all-links ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .all-links li {
+      margin-bottom: 10px;
     }
 
     footer {
@@ -765,14 +802,14 @@
       <div class="section-body">
         <h3>Anxiety does not stay contained</h3>
         <p>
-  Anxiety is something everyone experiences at times, and it can be useful. It helps the brain prepare for stressful situations or potential <a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">danger</a>.
-</p>
-<p>
-  However, for some people, anxiety becomes much more intense than the situation requires. In these cases, it can be harmful rather than helpful. Anxiety disorders involve ongoing and overwhelming worry about everyday situations, which can be difficult to control and last for long periods. This can interfere with daily life and lead people to avoid certain places or <a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">situations</a> to prevent feeling anxious.
-</p>
-<p>
-  People with anxiety disorders are often told that their feelings are not serious or are “just in their head,” which can make things worse by dismissing their experience. While anxiety does begin in the <a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">brain</a>, it can also cause real physical symptoms, showing that it affects both mental and physical health.
-</p>
+          Anxiety is something everyone experiences at times, and it can be useful. It helps the brain prepare for stressful situations or potential <a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">danger</a>.
+        </p>
+        <p>
+          However, for some people, anxiety becomes much more intense than the situation requires. In these cases, it can be harmful rather than helpful. Anxiety disorders involve ongoing and overwhelming worry about everyday situations, which can be difficult to control and last for long periods. This can interfere with daily life and lead people to avoid certain places or <a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">situations</a> to prevent feeling anxious.
+        </p>
+        <p>
+          People with anxiety disorders are often told that their feelings are not serious or are “just in their head,” which can make things worse by dismissing their experience. While anxiety does begin in the <a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">brain</a>, it can also cause real physical symptoms, showing that it affects both mental and physical health.
+        </p>
       </div>
     </section>
 
@@ -885,6 +922,19 @@
         <li><a href="https://www.gov.scot/publications/scottish-health-survey-2008/pages/7/" target="_blank" rel="noopener noreferrer">Scottish Government (2008). <em>The Scottish Health Survey 2008</em>.</a></li>
         <li><a href="https://www.bbc.co.uk/news/articles/cj01v8jdn10o" target="_blank" rel="noopener noreferrer">BBC News (2025). <em>Police Scotland warn mental health call-outs are ‘unsustainable’</em>.</a></li>
         <li><a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">Mayo Clinic Health System. <em>Anxiety disorders: Is it really all in your head?</em></a></li>
+      </ul>
+    </section>
+
+    <section class="all-links">
+      <h3>All links used on this page</h3>
+      <ul>
+        <li><a href="#story">#story</a></li>
+        <li><a href="#sources">#sources</a></li>
+        <li><a href="story1.html">story1.html</a></li>
+        <li><a href="https://www.gov.scot/publications/scottish-health-survey-2024-volume-1-main-report/documents/" target="_blank" rel="noopener noreferrer">https://www.gov.scot/publications/scottish-health-survey-2024-volume-1-main-report/documents/</a></li>
+        <li><a href="https://www.gov.scot/publications/scottish-health-survey-2008/pages/7/" target="_blank" rel="noopener noreferrer">https://www.gov.scot/publications/scottish-health-survey-2008/pages/7/</a></li>
+        <li><a href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety." target="_blank" rel="noopener noreferrer">https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/anxiety-disorders-is-it-really-all-in-your-head#:~:text=Everyone%20experiences%20some%20anxiety%20at,Mental%20symptoms%20of%20anxiety.</a></li>
+        <li><a href="https://www.bbc.co.uk/news/articles/cj01v8jdn10o" target="_blank" rel="noopener noreferrer">https://www.bbc.co.uk/news/articles/cj01v8jdn10o</a></li>
       </ul>
     </section>
   </main>
